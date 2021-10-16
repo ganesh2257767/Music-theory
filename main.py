@@ -48,12 +48,13 @@ while True:
         break
     
     if event == '-GO-':
-        scale, relative, chords = create_scale(values['-NOTE-'], values['-MAJOR-'])
-        window['-COL1-'].update(visible=False)
-        window['-SCALE-'].update(scale)
-        window['-RELATIVE-'].update(relative)
-        window['-CHORDS-'].update(chords)
-        window['-COL2-'].update(visible=True)
+        if n := values['-NOTE-']:
+            scale, relative, chords = create_scale(n, values['-MAJOR-'])
+            window['-COL1-'].update(visible=False)
+            window['-SCALE-'].update(scale)
+            window['-RELATIVE-'].update(relative)
+            window['-CHORDS-'].update(chords)
+            window['-COL2-'].update(visible=True)
     
     if event == '-BACK-':
         window['-COL2-'].update(visible=False)
